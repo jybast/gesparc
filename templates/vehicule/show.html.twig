@@ -1,0 +1,130 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vehicule{% endblock %}
+
+{% block body %}
+    <h1>Vehicule</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ vehicule.id }}</td>
+            </tr>
+            <tr>
+                <th>Immatriculation</th>
+                <td>{{ vehicule.immatriculation }}</td>
+            </tr>
+            <tr>
+                <th>Longueur</th>
+                <td>{{ vehicule.longueur }}</td>
+            </tr>
+            <tr>
+                <th>Largeur</th>
+                <td>{{ vehicule.largeur }}</td>
+            </tr>
+            <tr>
+                <th>Hauteur</th>
+                <td>{{ vehicule.hauteur }}</td>
+            </tr>
+            <tr>
+                <th>Poids_vide</th>
+                <td>{{ vehicule.poidsVide }}</td>
+            </tr>
+            <tr>
+                <th>Empattement</th>
+                <td>{{ vehicule.empattement }}</td>
+            </tr>
+            <tr>
+                <th>Reservoir</th>
+                <td>{{ vehicule.reservoir }}</td>
+            </tr>
+            <tr>
+                <th>Energie</th>
+                <td>{{ vehicule.energie }}</td>
+            </tr>
+            <tr>
+                <th>Co2</th>
+                <td>{{ vehicule.co2 }}</td>
+            </tr>
+            <tr>
+                <th>Conso_urbaine</th>
+                <td>{{ vehicule.consoUrbaine }}</td>
+            </tr>
+            <tr>
+                <th>Conso_mixte</th>
+                <td>{{ vehicule.consoMixte }}</td>
+            </tr>
+            <tr>
+                <th>Cylindree</th>
+                <td>{{ vehicule.cylindree }}</td>
+            </tr>
+            <tr>
+                <th>Puissance_din</th>
+                <td>{{ vehicule.puissanceDin }}</td>
+            </tr>
+            <tr>
+                <th>Puissance_fiscal</th>
+                <td>{{ vehicule.puissanceFiscal }}</td>
+            </tr>
+            <tr>
+                <th>Transmission</th>
+                <td>{{ vehicule.transmission }}</td>
+            </tr>
+            <tr>
+                <th>Boite_vitesse</th>
+                <td>{{ vehicule.boiteVitesse }}</td>
+            </tr>
+            <tr>
+                <th>Nb_vitesse</th>
+                <td>{{ vehicule.nbVitesse }}</td>
+            </tr>
+            <tr>
+                <th>Carrosserie</th>
+                <td>{{ vehicule.carrosserie }}</td>
+            </tr>
+            <tr>
+                <th>Pneumatiques</th>
+                <td>{{ vehicule.pneumatiques }}</td>
+            </tr>
+            <tr>
+                <th>AcheterAt</th>
+                <td>{{ vehicule.acheterAt ? vehicule.acheterAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>VendreAt</th>
+                <td>{{ vehicule.vendreAt ? vehicule.vendreAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Valeur_achat</th>
+                <td>{{ vehicule.valeurAchat }}</td>
+            </tr>
+            <tr>
+                <th>Marque</th>
+                <td>{{ vehicule.marque }}</td>
+            </tr>
+            <tr>
+                <th>Modèle</th>
+                <td>{{ vehicule.modèle }}</td>
+            </tr>
+            <tr>
+                <th>Numero_identification</th>
+                <td>{{ vehicule.numeroIdentification }}</td>
+            </tr>
+            <tr>
+                <th>CertificatPdf</th>
+                <td>{{ vehicule.certificatPdf }}</td>
+            </tr>
+            <tr>
+                <th>AssurancePdf</th>
+                <td>{{ vehicule.assurancePdf }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('vehicule_index') }}">back to list</a>
+
+    <a href="{{ path('vehicule_edit', {'id': vehicule.id}) }}">edit</a>
+
+    {{ include('vehicule/_delete_form.html.twig') }}
+{% endblock %}

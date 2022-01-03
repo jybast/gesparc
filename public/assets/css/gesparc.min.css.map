@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,OAAO,AAAA,CACL,KAAK,CAAE,IAAI,CACX,UAAU,CAAE,sBAAsB,CAClC,eAAe,CAAE,KAAK,CACvB",
+    "sources": [
+        "../scss/gesparc.scss"
+    ],
+    "names": [],
+    "file": "gesparc.min.css"
+}
