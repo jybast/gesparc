@@ -4,10 +4,9 @@ namespace App\Form;
 
 use App\Entity\Vehicule;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Validator\Constraints\File;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class VehiculeType extends AbstractType
 {
@@ -37,39 +36,17 @@ class VehiculeType extends AbstractType
             ->add('vendreAt')
             ->add('valeur_achat')
             ->add('marque')
-            ->add('modèle')
+            ->add('modele')
             ->add('numero_identification')
             ->add('certificatPdf', FileType::class, [
-                'label' => 'Certicificat d\'immatriculation (PDF)',
-                // Le champ n'est pas associé à une entité
+                'label' => 'Certificat d\'immatriculation',
                 'mapped' => false,
-                'required' => false,
-                'constraints' => [
-                    new File([
-                        'maxSize' => '2M',
-                        'mimeTypes' => [
-                            'application/pdf',
-                            'application/x-pdf',
-                        ],
-                        'mimeTypesMessage' => 'Veuillez télécharger un document PDF valide',
-                    ])
-                ],
+                'required' => false
             ])
             ->add('assurancePdf', FileType::class, [
-                'label' => 'Certicificat d\'assurance (PDF)',
-                // // Le champ n'est pas associé à une entité
+                'label' => 'Certificat d\'assurance',
                 'mapped' => false,
-                'required' => false,
-                'constraints' => [
-                    new File([
-                        'maxSize' => '2M',
-                        'mimeTypes' => [
-                            'application/pdf',
-                            'application/x-pdf',
-                        ],
-                        'mimeTypesMessage' => 'Veuillez télécharger un document PDF valide',
-                    ])
-                ],
+                'required' => false
             ]);
     }
 

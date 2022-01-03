@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Vehicule;
-use App\Form\Vehicule1Type;
+use App\Form\VehiculeType;
 use App\Repository\VehiculeRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -71,7 +71,7 @@ class VehiculeController extends AbstractController
     #[Route('/{id}', name: 'vehicule_delete', methods: ['POST'])]
     public function delete(Request $request, Vehicule $vehicule, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $vehicule->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$vehicule->getId(), $request->request->get('_token'))) {
             $entityManager->remove($vehicule);
             $entityManager->flush();
         }
