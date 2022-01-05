@@ -1,22 +1,48 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Reset your password{% endblock %}
+{% block title %}Reset your password
+{% endblock %}
 
 {% block body %}
-    {% for flashError in app.flashes('reset_password_error') %}
-        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
-    {% endfor %}
-    <h1>Reset your password</h1>
+	{% for flashError in app.flashes('reset_password_error') %}
+		<div class="alert alert-danger" role="alert">{{ flashError }}</div>
+	{% endfor %}
 
-    {{ form_start(requestForm) }}
-        {{ form_row(requestForm.email) }}
-        <div>
-            <small>
-                Enter your email address and we will send you a
-                link to reset your password.
-            </small>
-        </div>
+	<div class="page-wrapper">
+		<div class="page-content--bge5">
+			<div class="container">
+				<div class="login-wrap">
+					<div class="login-content">
+						<div class="login-logo">
+							<a href="#">
+								<img src="{{asset('assets/img/logo_vert.png')}}" alt="Gesparc">
+							</a>
+						</div>
+						<div class="login-form">
+							<h1 class="h3 mb-3 text-center font-weight-normal">Modifier votre mot de passe</h1>
+							<form action="" method="post">
+								<div class="form-group">
+									<label>Votre adresse e-mail</label>
+									<input class="au-input au-input--full" type="email" name="email" placeholder="Email">
+								</div>
+								<small>
+									Entrer votre adresse email et vous recevrez un lien pour mettre à jour votre mot de passe.
+								</small>
+								<button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Envoyer la demande</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-        <button class="btn btn-primary">Send password reset email</button>
-    {{ form_end(requestForm) }}
+	</div>
+
+
+	{{ form_start(requestForm) }}
+	{{ form_row(requestForm.email) }}
+	<div></div>
+
+	<button class="btn btn-primary">Send password reset email</button>
+	{{ form_end(requestForm) }}
 {% endblock %}
