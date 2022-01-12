@@ -2,18 +2,19 @@
 
 {% block title %}Se connecter
 {% endblock %}
+{% block nav %}
+	{% include "includes/_head.html.twig" %}
 
+{% endblock %}
 {% block body %}
-	<div class="page-wrapper">
-		<div class="page-content--bge5">
-			<div class="container">
+	<div class="col-sm-12 col-md col-lg">
+		<div class="container">
+			<div class="page-content--bge5">
 				<div class="login-wrap">
 					<div class="login-content">
 
 						<div class="login-logo">
-							<a href="#">
-								<img class="logo-h-center" src="{{asset('assets/img/logo_horizontal.png')}}" alt="Gesparc">
-							</a>
+							<img width="120px" height="45px" src="{{asset('assets/img/logo_horizontal.png')}}" alt="Gesparc">
 						</div>
 
 

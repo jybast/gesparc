@@ -20,7 +20,7 @@ class VehiculeRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Vehicule[] Returns an array of Vehicule objects
+    //  * @return Vehicule[] Retourne un tableau d'objets Vehicule
     //  */
     /*
     public function findByExampleField($value)

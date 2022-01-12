@@ -2,64 +2,64 @@
 
 {% block body %}
 	<div class="container-fluid">
-
-		<h1>Votre tableau de bord</h1>
 		<div class="row">
-			<div class="col-md-3 col-lg-4">
-				<div class="card text-dark bg-info">
-					<div class="card-body">
-						<h5 class="card-title">Vos véhicules</h5>
-						<table>
-							<thead>
-								<th>Marque</th>
-								<th>Modèle</th>
-								<th>Immatriculation</th>
-								<th>Action</th>
-							</thead>
-							<tbody>
-								<tr>
-									<td>KIA</td>
-									<td>Optima</td>
-									<td>CY-699-NP</td>
-									<td>
-										<a href="#" class="btn btn-primary">Voir</a>
-									</td>
-								</tr>
-								<tr>
-									<td>Renault</td>
-									<td>Clio</td>
-									<td>AC-123-SE</td>
-									<td>
-										<a href="#" class="btn btn-primary">Voir</a>
-									</td>
-								</tr>
-								<tr>
-									<td>Fleurette</td>
-									<td>LMF 73</td>
-									<td>FS-150-SE</td>
-									<td>
-										<a href="#" class="btn btn-primary">Voir</a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-3 col-lg-4">
-				<div class="card text-dark bg-success">
-					<div class="card-body">
-						<h5 class="card-title">Consommations</h5>
-						<div class="col-sm-6 col-lg-4">
-							<canvas id="pieChart"></canvas>
+			<h1>Votre tableau de bord</h1>
+			<div class="wrapper">
+				<div class="col-sm-12 col-md-3 col-lg-4">
+					<div class="card text-dark bg-info">
+						<div class="card-body">
+							<h5 class="card-title">Vos véhicules</h5>
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Immatriculation</th>
+										<th>Marque</th>
+										<th>Modèle</th>
+										<th>actions</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for vehicule in vehicules %}
+										<tr>
+											<td>{{ vehicule.immatriculation }}</td>
+											<td>{{ vehicule.marque }}</td>
+											<td>{{ vehicule.modele }}</td>
+											<td>
+												<a href="{{ path('vehicule_show', {'id': vehicule.id}) }}">
+													<i class="bi bi-card-list">Afficher</i>
+												</a>
+												<a href="{{ path('vehicule_edit', {'id': vehicule.id}) }}">
+													<i class="bi bi-pencil">Modifier</i>
+												</a>
+											</td>
+										</tr>
+									{% else %}
+										<tr>
+											<td colspan="29">Aucun véhicule</td>
+										</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+							<a href="{{ path('vehicule_new') }}">Ajouter un véhicule</a>
 						</div>
-						<a href="#" class="btn btn-primary">Go somewhere</a>
+					</div>
+				</div>
+
+				<div class="col-sm-12 col-md-3 col-lg-4">
+					<div class="card text-dark bg-success">
+						<div class="card-body">
+							<h5 class="card-title">Consommations</h5>
+							<div class="col-sm-6 col-lg-4">
+								<canvas id="pieChart"></canvas>
+							</div>
+							<a href="#" class="btn btn-primary">Go somewhere</a>
+						</div>
 					</div>
 				</div>
 			</div>
+
 		</div>
 
+
 	</div>
-
-
-</div>{% endblock %}
+{% endblock %}

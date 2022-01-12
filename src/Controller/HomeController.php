@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\VehiculeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -9,10 +10,13 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     #[Route('/home', name: 'app_home')]
-    public function index(): Response
+    public function index(VehiculeRepository $vehiculesRepository): Response
     {
+        // Récuppère tous les véhicules
+        $vehicules = $vehiculesRepository->findAll();
+
         return $this->render('home/home.html.twig', [
-            'controller_name' => 'HomeController',
+            'vehicules' => $vehicules,
         ]);
     }
 

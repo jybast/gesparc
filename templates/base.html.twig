@@ -32,18 +32,22 @@
 		{% endblock %}
 	</head>
 	<body>
-		<header>
-			{% block nav %}
-				{% include "includes/_nav.html.twig" %}
-			{% endblock %}
+		<div class="page-conteneur">
+			<header>
+				{% block nav %}
+					{% include "includes/_head.html.twig" %}
+					{% include "includes/_nav.html.twig" %}
+				{% endblock %}
 
-		</header>
-		<section>
-			{% block body %}{% endblock %}
-		</section>
+			</header>
+			<section>
+				{% block body %}{% endblock %}
+			</section>
 
-		<footer>
-			{% block foot %}{% endblock %}
-		</footer>
+			<footer>
+				{% block foot %}{% endblock %}
+			</footer>
+		</div>
+		<!-- Fin de page-conteneur -->
 	</body>
 </html>
