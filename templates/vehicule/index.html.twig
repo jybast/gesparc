@@ -1,86 +1,119 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Vehicule index
-{% endblock %}
+{% block title %}Vehicule index{% endblock %}
 
 {% block body %}
-	<h1>Vehicule index</h1>
+    <h1>Vehicule index</h1>
 
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Immatriculation</th>
-				<th>Longueur</th>
-				<th>Largeur</th>
-				<th>Hauteur</th>
-				<th>Poids à vide</th>
-				<th>Empattement</th>
-				<th>Réservoir</th>
-				<th>Energie</th>
-				<th>Co2</th>
-				<th>Consommation urbaine</th>
-				<th>Consommation mixte</th>
-				<th>Cylindrée</th>
-				<th>Puissance DIN</th>
-				<th>Puissance CV</th>
-				<th>Transmission</th>
-				<th>Boite de vitesse</th>
-				<th>Nb de vitesses</th>
-				<th>Carrosserie</th>
-				<th>Pneumatiques</th>
-				<th>Date d'achat</th>
-				<th>Date de vente</th>
-				<th>Valeur d'achat</th>
-				<th>Marque</th>
-				<th>Modèle</th>
-				<th>Numéro VIN</th>
-				<th>Carte grise</th>
-				<th>Assurance</th>
-				<th>actions</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for vehicule in vehicules %}
-				<tr>
-					<td>{{ vehicule.immatriculation }}</td>
-					<td>{{ vehicule.longueur }}</td>
-					<td>{{ vehicule.largeur }}</td>
-					<td>{{ vehicule.hauteur }}</td>
-					<td>{{ vehicule.poidsVide }}</td>
-					<td>{{ vehicule.empattement }}</td>
-					<td>{{ vehicule.reservoir }}</td>
-					<td>{{ vehicule.energie }}</td>
-					<td>{{ vehicule.co2 }}</td>
-					<td>{{ vehicule.consoUrbaine }}</td>
-					<td>{{ vehicule.consoMixte }}</td>
-					<td>{{ vehicule.cylindree }}</td>
-					<td>{{ vehicule.puissanceDin }}</td>
-					<td>{{ vehicule.puissanceFiscal }}</td>
-					<td>{{ vehicule.transmission }}</td>
-					<td>{{ vehicule.boiteVitesse }}</td>
-					<td>{{ vehicule.nbVitesse }}</td>
-					<td>{{ vehicule.carrosserie }}</td>
-					<td>{{ vehicule.pneumatiques }}</td>
-					<td>{{ vehicule.acheterAt ? vehicule.acheterAt|date('d/m/Y') : '' }}</td>
-					<td>{{ vehicule.vendreAt ? vehicule.vendreAt|date('d/m/Y') : '' }}</td>
-					<td>{{ vehicule.valeurAchat }}</td>
-					<td>{{ vehicule.marque }}</td>
-					<td>{{ vehicule.modele }}</td>
-					<td>{{ vehicule.numeroIdentification }}</td>
-					<td>{{ vehicule.certificatPdf }}</td>
-					<td>{{ vehicule.assurancePdf }}</td>
-					<td>
-						<a href="{{ path('vehicule_show', {'id': vehicule.id}) }}">Afficher</a>
-						<a href="{{ path('vehicule_edit', {'id': vehicule.id}) }}">Modifier</a>
-					</td>
-				</tr>
-			{% else %}
-				<tr>
-					<td colspan="29">Aucun véhicule</td>
-				</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Immatriculation</th>
+                <th>ImmatriculationAt</th>
+                <th>Titulaire1</th>
+                <th>Titulaire2</th>
+                <th>Titulaire_adresse</th>
+                <th>Marque</th>
+                <th>Version</th>
+                <th>D21_codecni</th>
+                <th>D3_commerial</th>
+                <th>Numero_VIN</th>
+                <th>F1_ptac</th>
+                <th>F3_ptra</th>
+                <th>G1_poidsvide</th>
+                <th>I_certificatAt</th>
+                <th>J1_genre</th>
+                <th>J2_carrosserie</th>
+                <th>J3_nat</th>
+                <th>K_reception</th>
+                <th>P1_cylindree</th>
+                <th>P2_kw</th>
+                <th>P3_energie</th>
+                <th>P6_cv</th>
+                <th>S1_assis</th>
+                <th>S2_debout</th>
+                <th>U1_db</th>
+                <th>U2_moteur</th>
+                <th>V7_co2</th>
+                <th>V9_cee</th>
+                <th>ControleAt</th>
+                <th>Longueur</th>
+                <th>Largeur</th>
+                <th>Hauteur</th>
+                <th>Transmission</th>
+                <th>Boite</th>
+                <th>Nbvitesse</th>
+                <th>Couleur</th>
+                <th>Reservoir</th>
+                <th>Conso_urbaine</th>
+                <th>Conso_mixte</th>
+                <th>AchatAt</th>
+                <th>VenteAt</th>
+                <th>Valeur</th>
+                <th>Pneumatiques</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vehicule in vehicules %}
+            <tr>
+                <td>{{ vehicule.id }}</td>
+                <td>{{ vehicule.immatriculation }}</td>
+                <td>{{ vehicule.immatriculationAt ? vehicule.immatriculationAt|date('Y-m-d') : '' }}</td>
+                <td>{{ vehicule.titulaire1 }}</td>
+                <td>{{ vehicule.titulaire2 }}</td>
+                <td>{{ vehicule.titulaireAdresse }}</td>
+                <td>{{ vehicule.marque }}</td>
+                <td>{{ vehicule.version }}</td>
+                <td>{{ vehicule.d21Codecni }}</td>
+                <td>{{ vehicule.d3Commerial }}</td>
+                <td>{{ vehicule.numeroVIN }}</td>
+                <td>{{ vehicule.f1Ptac }}</td>
+                <td>{{ vehicule.f3Ptra }}</td>
+                <td>{{ vehicule.g1Poidsvide }}</td>
+                <td>{{ vehicule.iCertificatAt ? vehicule.iCertificatAt|date('Y-m-d') : '' }}</td>
+                <td>{{ vehicule.j1Genre }}</td>
+                <td>{{ vehicule.j2Carrosserie }}</td>
+                <td>{{ vehicule.j3Nat }}</td>
+                <td>{{ vehicule.kReception }}</td>
+                <td>{{ vehicule.p1Cylindree }}</td>
+                <td>{{ vehicule.p2Kw }}</td>
+                <td>{{ vehicule.p3Energie }}</td>
+                <td>{{ vehicule.p6Cv }}</td>
+                <td>{{ vehicule.s1Assis }}</td>
+                <td>{{ vehicule.s2Debout }}</td>
+                <td>{{ vehicule.u1Db }}</td>
+                <td>{{ vehicule.u2Moteur }}</td>
+                <td>{{ vehicule.v7Co2 }}</td>
+                <td>{{ vehicule.v9Cee }}</td>
+                <td>{{ vehicule.controleAt ? vehicule.controleAt|date('Y-m-d') : '' }}</td>
+                <td>{{ vehicule.longueur }}</td>
+                <td>{{ vehicule.largeur }}</td>
+                <td>{{ vehicule.hauteur }}</td>
+                <td>{{ vehicule.transmission }}</td>
+                <td>{{ vehicule.boite }}</td>
+                <td>{{ vehicule.nbvitesse }}</td>
+                <td>{{ vehicule.couleur }}</td>
+                <td>{{ vehicule.reservoir }}</td>
+                <td>{{ vehicule.consoUrbaine }}</td>
+                <td>{{ vehicule.consoMixte }}</td>
+                <td>{{ vehicule.achatAt ? vehicule.achatAt|date('Y-m-d') : '' }}</td>
+                <td>{{ vehicule.venteAt ? vehicule.venteAt|date('Y-m-d') : '' }}</td>
+                <td>{{ vehicule.valeur }}</td>
+                <td>{{ vehicule.pneumatiques }}</td>
+                <td>
+                    <a href="{{ path('vehicule_show', {'id': vehicule.id}) }}">show</a>
+                    <a href="{{ path('vehicule_edit', {'id': vehicule.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="45">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-	<a href="{{ path('vehicule_new') }}">Ajouter un véhicule</a>
+    <a href="{{ path('vehicule_new') }}">Create new</a>
 {% endblock %}

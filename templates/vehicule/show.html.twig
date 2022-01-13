@@ -16,6 +16,118 @@
                 <td>{{ vehicule.immatriculation }}</td>
             </tr>
             <tr>
+                <th>ImmatriculationAt</th>
+                <td>{{ vehicule.immatriculationAt ? vehicule.immatriculationAt|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Titulaire1</th>
+                <td>{{ vehicule.titulaire1 }}</td>
+            </tr>
+            <tr>
+                <th>Titulaire2</th>
+                <td>{{ vehicule.titulaire2 }}</td>
+            </tr>
+            <tr>
+                <th>Titulaire_adresse</th>
+                <td>{{ vehicule.titulaireAdresse }}</td>
+            </tr>
+            <tr>
+                <th>Marque</th>
+                <td>{{ vehicule.marque }}</td>
+            </tr>
+            <tr>
+                <th>Version</th>
+                <td>{{ vehicule.version }}</td>
+            </tr>
+            <tr>
+                <th>D21_codecni</th>
+                <td>{{ vehicule.d21Codecni }}</td>
+            </tr>
+            <tr>
+                <th>D3_commerial</th>
+                <td>{{ vehicule.d3Commerial }}</td>
+            </tr>
+            <tr>
+                <th>Numero_VIN</th>
+                <td>{{ vehicule.numeroVIN }}</td>
+            </tr>
+            <tr>
+                <th>F1_ptac</th>
+                <td>{{ vehicule.f1Ptac }}</td>
+            </tr>
+            <tr>
+                <th>F3_ptra</th>
+                <td>{{ vehicule.f3Ptra }}</td>
+            </tr>
+            <tr>
+                <th>G1_poidsvide</th>
+                <td>{{ vehicule.g1Poidsvide }}</td>
+            </tr>
+            <tr>
+                <th>I_certificatAt</th>
+                <td>{{ vehicule.iCertificatAt ? vehicule.iCertificatAt|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>J1_genre</th>
+                <td>{{ vehicule.j1Genre }}</td>
+            </tr>
+            <tr>
+                <th>J2_carrosserie</th>
+                <td>{{ vehicule.j2Carrosserie }}</td>
+            </tr>
+            <tr>
+                <th>J3_nat</th>
+                <td>{{ vehicule.j3Nat }}</td>
+            </tr>
+            <tr>
+                <th>K_reception</th>
+                <td>{{ vehicule.kReception }}</td>
+            </tr>
+            <tr>
+                <th>P1_cylindree</th>
+                <td>{{ vehicule.p1Cylindree }}</td>
+            </tr>
+            <tr>
+                <th>P2_kw</th>
+                <td>{{ vehicule.p2Kw }}</td>
+            </tr>
+            <tr>
+                <th>P3_energie</th>
+                <td>{{ vehicule.p3Energie }}</td>
+            </tr>
+            <tr>
+                <th>P6_cv</th>
+                <td>{{ vehicule.p6Cv }}</td>
+            </tr>
+            <tr>
+                <th>S1_assis</th>
+                <td>{{ vehicule.s1Assis }}</td>
+            </tr>
+            <tr>
+                <th>S2_debout</th>
+                <td>{{ vehicule.s2Debout }}</td>
+            </tr>
+            <tr>
+                <th>U1_db</th>
+                <td>{{ vehicule.u1Db }}</td>
+            </tr>
+            <tr>
+                <th>U2_moteur</th>
+                <td>{{ vehicule.u2Moteur }}</td>
+            </tr>
+            <tr>
+                <th>V7_co2</th>
+                <td>{{ vehicule.v7Co2 }}</td>
+            </tr>
+            <tr>
+                <th>V9_cee</th>
+                <td>{{ vehicule.v9Cee }}</td>
+            </tr>
+            <tr>
+                <th>ControleAt</th>
+                <td>{{ vehicule.controleAt ? vehicule.controleAt|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
                 <th>Longueur</th>
                 <td>{{ vehicule.longueur }}</td>
             </tr>
@@ -28,24 +140,24 @@
                 <td>{{ vehicule.hauteur }}</td>
             </tr>
             <tr>
-                <th>Poids_vide</th>
-                <td>{{ vehicule.poidsVide }}</td>
+                <th>Transmission</th>
+                <td>{{ vehicule.transmission }}</td>
             </tr>
             <tr>
-                <th>Empattement</th>
-                <td>{{ vehicule.empattement }}</td>
+                <th>Boite</th>
+                <td>{{ vehicule.boite }}</td>
+            </tr>
+            <tr>
+                <th>Nbvitesse</th>
+                <td>{{ vehicule.nbvitesse }}</td>
+            </tr>
+            <tr>
+                <th>Couleur</th>
+                <td>{{ vehicule.couleur }}</td>
             </tr>
             <tr>
                 <th>Reservoir</th>
                 <td>{{ vehicule.reservoir }}</td>
-            </tr>
-            <tr>
-                <th>Energie</th>
-                <td>{{ vehicule.energie }}</td>
-            </tr>
-            <tr>
-                <th>Co2</th>
-                <td>{{ vehicule.co2 }}</td>
             </tr>
             <tr>
                 <th>Conso_urbaine</th>
@@ -56,68 +168,20 @@
                 <td>{{ vehicule.consoMixte }}</td>
             </tr>
             <tr>
-                <th>Cylindree</th>
-                <td>{{ vehicule.cylindree }}</td>
+                <th>AchatAt</th>
+                <td>{{ vehicule.achatAt ? vehicule.achatAt|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
-                <th>Puissance_din</th>
-                <td>{{ vehicule.puissanceDin }}</td>
+                <th>VenteAt</th>
+                <td>{{ vehicule.venteAt ? vehicule.venteAt|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
-                <th>Puissance_fiscal</th>
-                <td>{{ vehicule.puissanceFiscal }}</td>
-            </tr>
-            <tr>
-                <th>Transmission</th>
-                <td>{{ vehicule.transmission }}</td>
-            </tr>
-            <tr>
-                <th>Boite_vitesse</th>
-                <td>{{ vehicule.boiteVitesse }}</td>
-            </tr>
-            <tr>
-                <th>Nb_vitesse</th>
-                <td>{{ vehicule.nbVitesse }}</td>
-            </tr>
-            <tr>
-                <th>Carrosserie</th>
-                <td>{{ vehicule.carrosserie }}</td>
+                <th>Valeur</th>
+                <td>{{ vehicule.valeur }}</td>
             </tr>
             <tr>
                 <th>Pneumatiques</th>
                 <td>{{ vehicule.pneumatiques }}</td>
-            </tr>
-            <tr>
-                <th>AcheterAt</th>
-                <td>{{ vehicule.acheterAt ? vehicule.acheterAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>VendreAt</th>
-                <td>{{ vehicule.vendreAt ? vehicule.vendreAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Valeur_achat</th>
-                <td>{{ vehicule.valeurAchat }}</td>
-            </tr>
-            <tr>
-                <th>Marque</th>
-                <td>{{ vehicule.marque }}</td>
-            </tr>
-            <tr>
-                <th>Modele</th>
-                <td>{{ vehicule.modele }}</td>
-            </tr>
-            <tr>
-                <th>Numero_identification</th>
-                <td>{{ vehicule.numeroIdentification }}</td>
-            </tr>
-            <tr>
-                <th>CertificatPdf</th>
-                <td>{{ vehicule.certificatPdf }}</td>
-            </tr>
-            <tr>
-                <th>AssurancePdf</th>
-                <td>{{ vehicule.assurancePdf }}</td>
             </tr>
         </tbody>
     </table>

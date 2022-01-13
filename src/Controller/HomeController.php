@@ -10,13 +10,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     #[Route('/home', name: 'app_home')]
-    public function index(VehiculeRepository $vehiculesRepository): Response
+    public function index(): Response
     {
-        // Récuppère tous les véhicules
-        $vehicules = $vehiculesRepository->findAll();
+
 
         return $this->render('home/home.html.twig', [
-            'vehicules' => $vehicules,
+            'controller' => 'HomeController'
         ]);
     }
 

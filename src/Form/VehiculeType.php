@@ -3,14 +3,11 @@
 namespace App\Form;
 
 use App\Entity\Vehicule;
-
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
@@ -20,104 +17,155 @@ class VehiculeType extends AbstractType
     {
         $builder
             ->add('immatriculation', TextType::class, [
-                'label' => 'Immatriculation',
-                'required' => true
+                'label' => 'Numéro d\'immatriculation'
             ])
-            ->add('longueur', NumberType::class, [
-                'label' => 'Consommation mixte',
-                'scale' => 2
-            ])
-            ->add('largeur', NumberType::class, [
-                'label' => 'Consommation mixte',
-                'scale' => 2
-            ])
-            ->add('hauteur', NumberType::class, [
-                'label' => 'Consommation mixte',
-                'scale' => 2
-            ])
-            ->add('poids_vide', IntegerType::class, [
-                'label' => 'Poids à vide'
-            ])
-            ->add('empattement', IntegerType::class, [
-                'label' => 'Empattement'
-            ])
-            ->add('reservoir', IntegerType::class, [
-                'label' => 'Capacité du réservoir'
-            ])
-            ->add('energie', TextType::class, [
-                'label' => 'Energie'
-            ])
-            ->add('co2', IntegerType::class, [
-                'label' => 'Emission CO2'
-            ])
-            ->add('conso_urbaine', NumberType::class, [
-                'label' => 'Consommation mixte',
-                'scale' => 2
-            ])
-            ->add('conso_mixte', NumberType::class, [
-                'label' => 'Consommation mixte',
-                'scale' => 2
-            ])
-            ->add('cylindree', IntegerType::class, [
-                'label' => 'Cylindrée'
-            ])
-            ->add('puissance_din', IntegerType::class, [
-                'label' => 'Puissance'
-            ])
-            ->add('puissance_fiscal', IntegerType::class, [
-                'label' => 'Puissance fiscale'
-            ])
-            ->add('transmission', TextType::class, [
-                'label' => 'Transmission'
-            ])
-            ->add('boite_vitesse', TextType::class, [
-                'label' => 'Type de boîte de vitesse'
-            ])
-            ->add('nb_vitesse', IntegerType::class, [
-                'label' => 'Nombre de vitesses'
-            ])
-            ->add('carrosserie', TextType::class, [
-                'label' => 'Carrosserie'
-            ])
-            ->add('pneumatiques', TextType::class, [
-                'label' => 'Pneumatiques'
-            ])
-            ->add('acheterAt', DateType::class, [
-                'label' => 'Date d\'acquisition',
+            ->add('immatriculationAt', DateType::class, [
+                'label' => 'Date 1ère mise en circulation',
                 'widget' => 'choice',
                 'years' => range(date('Y') - 15, date('Y') + 10),
-                'months' => range(date('m'), 12),
-                'days' => range(date('d'), 31),
             ])
-            ->add('vendreAt', DateType::class, [
-                'label' => 'Date de vente',
-                'widget' => 'choice',
-                'years' => range(date('Y') - 10, date('Y') + 10),
-                'months' => range(date('m'), 12),
-                'days' => range(date('d'), 31),
+            ->add('titulaire1', TextType::class, [
+                'label' => 'Nom et prénom du titulaire'
             ])
-            ->add('valeur_achat', MoneyType::class, [
-                'label' => 'Valeur d\achat',
-                'scale' => 2
-
+            ->add('titulaire2', TextType::class, [
+                'label' => 'Nom et prénom du co-titulaire'
+            ])
+            ->add('titulaire_adresse', TextType::class, [
+                'label' => 'Adresse du titulaire'
             ])
             ->add('marque', TextType::class, [
                 'label' => 'Marque'
             ])
-            ->add('modele', TextType::class, [
-                'label' => 'Modèle'
+            ->add('version', TextType::class, [
+                'label' => 'Version ou modèle'
             ])
-            ->add('numero_identification', TextType::class, [
-                'label' => 'Numéro d\'identification VIN'
+            ->add('d21_codecni', TextType::class, [
+                'label' => 'Code national d\'identification'
             ])
-            ->add('certificatPdf', FileType::class, [
-                'label' => 'Certificat d\'immatriculation',
-                'mapped' => false,
+            ->add('d3_commerial', TextType::class, [
+                'label' => 'Dénommination commerciale'
+            ])
+            ->add('numero_VIN', TextType::class, [
+                'label' => 'Code VIN'
+            ])
+            ->add('f1_ptac', IntegerType::class, [
+                'label' => 'Masse autorisée'
+            ])
+            ->add('f3_ptra', IntegerType::class, [
+                'label' => 'Poids total roulant'
+            ])
+            ->add('g1_poidsvide', IntegerType::class, [
+                'label' => 'Masse à vide'
+            ])
+            ->add('i_certificatAt', DateType::class, [
+                'label' => 'Date du certificat',
+                'widget' => 'choice',
+                'years' => range(date('Y') - 15, date('Y') + 10),
+            ])
+            ->add('j1_genre', TextType::class, [
+                'label' => 'Genre'
+            ])
+            ->add('j2_carrosserie', TextType::class, [
+                'label' => 'Type CE'
+            ])
+            ->add('j3_nat', TextType::class, [
+                'label' => 'Type Nat'
+            ])
+            ->add('k_reception', TextType::class, [
+                'label' => 'Réception'
+            ])
+            ->add('p1_cylindree', IntegerType::class, [
+                'label' => 'Cylindrée'
+            ])
+            ->add('p2_kw', IntegerType::class, [
+                'label' => 'Puissance KW'
+            ])
+            ->add('p3_energie', TextType::class, [
+                'label' => 'Energie'
+            ])
+            ->add('p6_cv', IntegerType::class, [
+                'label' => 'Puissance CV'
+            ])
+            ->add('s1_assis', IntegerType::class, [
+                'label' => 'Places assises'
+            ])
+            ->add('s2_debout', IntegerType::class, [
+                'label' => 'Places debout'
+            ])
+            ->add('u1_db', IntegerType::class, [
+                'label' => 'Volume DB'
+            ])
+            ->add('u2_moteur', IntegerType::class, [
+                'label' => 'Vitesse moteur'
+            ])
+            ->add('v7_co2', IntegerType::class, [
+                'label' => 'Emission CO2'
+            ])
+            ->add('v9_cee', TextType::class, [
+                'label' => 'Norme CEE'
+            ])
+            ->add('controleAt', DateType::class, [
+                'label' => 'Date prochain contrôle',
+                'widget' => 'choice',
+                'years' => range(date('Y') - 10, date('Y') + 10),
+            ])
+            ->add('longueur', NumberType::class, [
+                'label' => 'Longueur',
+                'scale' => 2,
                 'required' => false
             ])
-            ->add('assurancePdf', FileType::class, [
-                'label' => 'Certificat d\'assurance',
-                'mapped' => false,
+            ->add('largeur', NumberType::class, [
+                'label' => 'Largeur',
+                'scale' => 2,
+                'required' => false
+            ])
+            ->add('hauteur', NumberType::class, [
+                'label' => 'Hauteur',
+                'scale' => 2,
+                'required' => false
+            ])
+            ->add('transmission', TextType::class, [
+                'label' => 'Transmission'
+            ])
+            ->add('boite', TextType::class, [
+                'label' => 'Type de boîte'
+            ])
+            ->add('nbvitesse', IntegerType::class, [
+                'label' => 'Nombre de vitesses'
+            ])
+            ->add('couleur', TextType::class, [
+                'label' => 'Couleur'
+            ])
+            ->add('reservoir', IntegerType::class, [
+                'label' => 'Capacité'
+            ])
+            ->add('conso_urbaine', NumberType::class, [
+                'label' => 'Consommation urbaine',
+                'scale' => 2,
+                'required' => false
+            ])
+            ->add('conso_mixte', NumberType::class, [
+                'label' => 'Consommation moyenne',
+                'scale' => 2,
+                'required' => false
+            ])
+            ->add('achatAt', DateType::class, [
+                'label' => 'Date d\'achat',
+                'widget' => 'choice',
+                'years' => range(date('Y') - 15, date('Y') + 10),
+            ])
+            ->add('venteAt', DateType::class, [
+                'label' => 'Date de revente',
+                'widget' => 'choice',
+                'years' => range(date('Y') - 10, date('Y') + 10),
+            ])
+            ->add('valeur', NumberType::class, [
+                'label' => 'Valeur à l\'achat',
+                'scale' => 2,
+                'required' => false
+            ])
+            ->add('pneumatiques', TextType::class, [
+                'label' => 'Pneumatiques',
                 'required' => false
             ]);
     }

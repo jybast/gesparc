@@ -6,6 +6,7 @@
 parameters:
     certificats_directory: '%kernel.project_dir%/public/uploads/certificat'
     assurances_directory: '%kernel.project_dir%/public/uploads/assurance'
+    galeries_directory: '%kernel.project_dir%/public/uploads/galerie'
 services:
     # default configuration for services in *this* file
     _defaults:

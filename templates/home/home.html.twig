@@ -18,29 +18,9 @@
 										<th>actions</th>
 									</tr>
 								</thead>
-								<tbody>
-									{% for vehicule in vehicules %}
-										<tr>
-											<td>{{ vehicule.immatriculation }}</td>
-											<td>{{ vehicule.marque }}</td>
-											<td>{{ vehicule.modele }}</td>
-											<td>
-												<a href="{{ path('vehicule_show', {'id': vehicule.id}) }}">
-													<i class="bi bi-card-list">Afficher</i>
-												</a>
-												<a href="{{ path('vehicule_edit', {'id': vehicule.id}) }}">
-													<i class="bi bi-pencil">Modifier</i>
-												</a>
-											</td>
-										</tr>
-									{% else %}
-										<tr>
-											<td colspan="29">Aucun véhicule</td>
-										</tr>
-									{% endfor %}
-								</tbody>
+								<tbody></tbody>
 							</table>
-							<a href="{{ path('vehicule_new') }}">Ajouter un véhicule</a>
+							<a href="">Ajouter un véhicule</a>
 						</div>
 					</div>
 				</div>

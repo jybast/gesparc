@@ -32,7 +32,7 @@ class RegistrationFormType extends AbstractType
                         'message' => 'Entrer un e-mail valide',
                     ]),
                     new Regex([
-                        'pattern' => "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/",
+                        'pattern' => "#^[a-zA-Z0-9.!$\#%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$#",
                         'message' => 'Le format de votre email est incorrect'
                     ])
                 ]
