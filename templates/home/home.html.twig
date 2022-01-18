@@ -4,39 +4,55 @@
 	<div class="container-fluid">
 		<div class="row">
 			<h1>Votre tableau de bord</h1>
+			<h2>Vous avez
+				{{ vehicules|length }}
+				véhicule(s)</h2>
 			<div class="wrapper">
-				<div class="col-sm-12 col-md-3 col-lg-4">
-					<div class="card text-dark bg-info">
-						<div class="card-body">
-							<h5 class="card-title">Vos véhicules</h5>
-							<table class="table">
-								<thead>
+
+				<div class="card text-dark bg-info">
+					<div class="card-body">
+						<h5 class="card-title">Vos véhicules</h5>
+						<table class="table table-responsive-sm">
+							<thead>
+								<tr>
+									<th>Immatriculation</th>
+									<th>Marque</th>
+									<th>Modèle</th>
+									<th>actions</th>
+								</tr>
+								{% for vehicule in vehicules %}
 									<tr>
-										<th>Immatriculation</th>
-										<th>Marque</th>
-										<th>Modèle</th>
-										<th>actions</th>
+										<td>{{ vehicule.immatriculation}}</td>
+										<td>{{ vehicule.marque}}</td>
+										<td>{{ vehicule.version}}</td>
+										<td>
+											<a href="{{ path('vehicule_show', {'id': vehicule.id})}}">
+												<i class="bi bi-binoculars-fill">Consulter</i>
+											</a>
+										</td>
 									</tr>
-								</thead>
-								<tbody></tbody>
-							</table>
-							<a href="">Ajouter un véhicule</a>
-						</div>
+								{% endfor %}
+
+							</thead>
+							<tbody></tbody>
+						</table>
+						<a href="{{ path('vehicule_new')}}">Ajouter un véhicule</a>
 					</div>
+
 				</div>
 
-				<div class="col-sm-12 col-md-3 col-lg-4">
-					<div class="card text-dark bg-success">
-						<div class="card-body">
-							<h5 class="card-title">Consommations</h5>
-							<div class="col-sm-6 col-lg-4">
-								<canvas id="pieChart"></canvas>
-							</div>
-							<a href="#" class="btn btn-primary">Go somewhere</a>
-						</div>
+
+				<div class="card text-dark bg-success">
+					<div class="card-body">
+						<h5 class="card-title">Consommations</h5>
+						<table class="table table-responsive-sm">
+							<canvas id="pieChart"></canvas>
+						</table>
+
 					</div>
 				</div>
 			</div>
+
 
 		</div>
 

@@ -7,9 +7,12 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Mime\MimeTypes;
+use Symfony\Component\Validator\Constraints\File;
 
 class VehiculeType extends AbstractType
 {
@@ -22,6 +25,7 @@ class VehiculeType extends AbstractType
             ->add('immatriculationAt', DateType::class, [
                 'label' => 'Date 1ère mise en circulation',
                 'widget' => 'choice',
+                'format' => 'dd/MMM/yyyy',
                 'years' => range(date('Y') - 15, date('Y') + 10),
             ])
             ->add('titulaire1', TextType::class, [
@@ -60,6 +64,7 @@ class VehiculeType extends AbstractType
             ->add('i_certificatAt', DateType::class, [
                 'label' => 'Date du certificat',
                 'widget' => 'choice',
+                'format' => 'dd/MMM/yyyy',
                 'years' => range(date('Y') - 15, date('Y') + 10),
             ])
             ->add('j1_genre', TextType::class, [
@@ -107,6 +112,7 @@ class VehiculeType extends AbstractType
             ->add('controleAt', DateType::class, [
                 'label' => 'Date prochain contrôle',
                 'widget' => 'choice',
+                'format' => 'dd/MMM/yyyy',
                 'years' => range(date('Y') - 10, date('Y') + 10),
             ])
             ->add('longueur', NumberType::class, [
@@ -152,12 +158,15 @@ class VehiculeType extends AbstractType
             ->add('achatAt', DateType::class, [
                 'label' => 'Date d\'achat',
                 'widget' => 'choice',
+                'format' => 'dd/MMM/yyyy',
                 'years' => range(date('Y') - 15, date('Y') + 10),
             ])
             ->add('venteAt', DateType::class, [
                 'label' => 'Date de revente',
                 'widget' => 'choice',
+                'format' => 'dd/MMM/yyyy',
                 'years' => range(date('Y') - 10, date('Y') + 10),
+                'required' => false
             ])
             ->add('valeur', NumberType::class, [
                 'label' => 'Valeur à l\'achat',
@@ -167,6 +176,32 @@ class VehiculeType extends AbstractType
             ->add('pneumatiques', TextType::class, [
                 'label' => 'Pneumatiques',
                 'required' => false
+            ])
+
+            ->add('galeries', FileType::class, [
+                'label' => 'Images à télécharger',
+                'mapped' => false,
+                'multiple' => true,
+                'required' => false,
+                'constraints' => [
+                    new File([
+
+                        'mimeTypes' => ['image/jpeg', 'image/png'],
+                    ])
+                ]
+            ])
+            ->add('documents', FileType::class, [
+                'label' => 'documents à télécharger',
+                'mapped' => false,
+                'multiple' => true,
+                'required' => false,
+                'constraints' => [
+                    new File([
+
+                        'mimeTypes' => ['application/pdf', 'application/x-pdf'],
+                        'mimeTypesMessage' => 'Veuillez utiliser un fichier PDF valide.'
+                    ])
+                ]
             ]);
     }
 

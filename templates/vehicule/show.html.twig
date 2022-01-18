@@ -1,194 +1,226 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Vehicule{% endblock %}
+{% block title %}
+	{{ vehicule.marque }}
+	-
+	{{ vehicule.immatriculation }}
+{% endblock %}
 
 {% block body %}
-    <h1>Vehicule</h1>
+	<div class="container">
+		<h1>{{ vehicule.marque }}
+			-
+			{{ vehicule.immatriculation }}</h1>
+		<ul class="nav nav-tabs" id="myTab" role="tablist">
+			<li class="nav-item" role="presentation">
+				<button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Généralités</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="ci-tab" data-bs-toggle="tab" data-bs-target="#ci" type="button" role="tab" aria-controls="ci" aria-selected="false">Carte grise</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="infos-tab" data-bs-toggle="tab" data-bs-target="#infos" type="button" role="tab" aria-controls="infos" aria-selected="false">Informations</button>
+			</li>
+		</ul>
+		<div class="tab-content" id="myTabContent">
+			<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+				<table class="table">
+					<tbody>
+						<tr>
+							<th>Immatriculation</th>
+							<th>Marque</th>
+							<th>Version</th>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ vehicule.id }}</td>
-            </tr>
-            <tr>
-                <th>Immatriculation</th>
-                <td>{{ vehicule.immatriculation }}</td>
-            </tr>
-            <tr>
-                <th>ImmatriculationAt</th>
-                <td>{{ vehicule.immatriculationAt ? vehicule.immatriculationAt|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Titulaire1</th>
-                <td>{{ vehicule.titulaire1 }}</td>
-            </tr>
-            <tr>
-                <th>Titulaire2</th>
-                <td>{{ vehicule.titulaire2 }}</td>
-            </tr>
-            <tr>
-                <th>Titulaire_adresse</th>
-                <td>{{ vehicule.titulaireAdresse }}</td>
-            </tr>
-            <tr>
-                <th>Marque</th>
-                <td>{{ vehicule.marque }}</td>
-            </tr>
-            <tr>
-                <th>Version</th>
-                <td>{{ vehicule.version }}</td>
-            </tr>
-            <tr>
-                <th>D21_codecni</th>
-                <td>{{ vehicule.d21Codecni }}</td>
-            </tr>
-            <tr>
-                <th>D3_commerial</th>
-                <td>{{ vehicule.d3Commerial }}</td>
-            </tr>
-            <tr>
-                <th>Numero_VIN</th>
-                <td>{{ vehicule.numeroVIN }}</td>
-            </tr>
-            <tr>
-                <th>F1_ptac</th>
-                <td>{{ vehicule.f1Ptac }}</td>
-            </tr>
-            <tr>
-                <th>F3_ptra</th>
-                <td>{{ vehicule.f3Ptra }}</td>
-            </tr>
-            <tr>
-                <th>G1_poidsvide</th>
-                <td>{{ vehicule.g1Poidsvide }}</td>
-            </tr>
-            <tr>
-                <th>I_certificatAt</th>
-                <td>{{ vehicule.iCertificatAt ? vehicule.iCertificatAt|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>J1_genre</th>
-                <td>{{ vehicule.j1Genre }}</td>
-            </tr>
-            <tr>
-                <th>J2_carrosserie</th>
-                <td>{{ vehicule.j2Carrosserie }}</td>
-            </tr>
-            <tr>
-                <th>J3_nat</th>
-                <td>{{ vehicule.j3Nat }}</td>
-            </tr>
-            <tr>
-                <th>K_reception</th>
-                <td>{{ vehicule.kReception }}</td>
-            </tr>
-            <tr>
-                <th>P1_cylindree</th>
-                <td>{{ vehicule.p1Cylindree }}</td>
-            </tr>
-            <tr>
-                <th>P2_kw</th>
-                <td>{{ vehicule.p2Kw }}</td>
-            </tr>
-            <tr>
-                <th>P3_energie</th>
-                <td>{{ vehicule.p3Energie }}</td>
-            </tr>
-            <tr>
-                <th>P6_cv</th>
-                <td>{{ vehicule.p6Cv }}</td>
-            </tr>
-            <tr>
-                <th>S1_assis</th>
-                <td>{{ vehicule.s1Assis }}</td>
-            </tr>
-            <tr>
-                <th>S2_debout</th>
-                <td>{{ vehicule.s2Debout }}</td>
-            </tr>
-            <tr>
-                <th>U1_db</th>
-                <td>{{ vehicule.u1Db }}</td>
-            </tr>
-            <tr>
-                <th>U2_moteur</th>
-                <td>{{ vehicule.u2Moteur }}</td>
-            </tr>
-            <tr>
-                <th>V7_co2</th>
-                <td>{{ vehicule.v7Co2 }}</td>
-            </tr>
-            <tr>
-                <th>V9_cee</th>
-                <td>{{ vehicule.v9Cee }}</td>
-            </tr>
-            <tr>
-                <th>ControleAt</th>
-                <td>{{ vehicule.controleAt ? vehicule.controleAt|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Longueur</th>
-                <td>{{ vehicule.longueur }}</td>
-            </tr>
-            <tr>
-                <th>Largeur</th>
-                <td>{{ vehicule.largeur }}</td>
-            </tr>
-            <tr>
-                <th>Hauteur</th>
-                <td>{{ vehicule.hauteur }}</td>
-            </tr>
-            <tr>
-                <th>Transmission</th>
-                <td>{{ vehicule.transmission }}</td>
-            </tr>
-            <tr>
-                <th>Boite</th>
-                <td>{{ vehicule.boite }}</td>
-            </tr>
-            <tr>
-                <th>Nbvitesse</th>
-                <td>{{ vehicule.nbvitesse }}</td>
-            </tr>
-            <tr>
-                <th>Couleur</th>
-                <td>{{ vehicule.couleur }}</td>
-            </tr>
-            <tr>
-                <th>Reservoir</th>
-                <td>{{ vehicule.reservoir }}</td>
-            </tr>
-            <tr>
-                <th>Conso_urbaine</th>
-                <td>{{ vehicule.consoUrbaine }}</td>
-            </tr>
-            <tr>
-                <th>Conso_mixte</th>
-                <td>{{ vehicule.consoMixte }}</td>
-            </tr>
-            <tr>
-                <th>AchatAt</th>
-                <td>{{ vehicule.achatAt ? vehicule.achatAt|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>VenteAt</th>
-                <td>{{ vehicule.venteAt ? vehicule.venteAt|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Valeur</th>
-                <td>{{ vehicule.valeur }}</td>
-            </tr>
-            <tr>
-                <th>Pneumatiques</th>
-                <td>{{ vehicule.pneumatiques }}</td>
-            </tr>
-        </tbody>
-    </table>
+						</tr>
+						<tr>
+							<td>{{ vehicule.immatriculation }}</td>
+							<td>{{ vehicule.marque }}</td>
+							<td>{{ vehicule.version }}</td>
+						</tr>
+						<tr>
+							<th>Couleur</th>
+							<td>{{ vehicule.couleur }}</td>
+						</tr>
+						<tr>
+							<td><img class="img-fluid" src="{{ asset('assets/img/IMG_3084.JPG') }}" alt=""></td>
+						</tr>
 
-    <a href="{{ path('vehicule_index') }}">back to list</a>
+					</tbody>
+				</table>
+			</div>
+			<div class="tab-pane fade" id="ci" role="tabpanel" aria-labelledby="ci-tab">
+				<table class="table-responsive">
+					<tbody>
+						<tr>
+							<th>Date 1ère mise en circulation</th>
+							<td>{{ vehicule.immatriculationAt ? vehicule.immatriculationAt|date('d/m/Y') : '' }}</td>
+						</tr>
+						<tr>
+							<th>Nom du propriétaire</th>
+							<th>Nom du co-propriétaire</th>
+							<th>Adresse</th>
 
-    <a href="{{ path('vehicule_edit', {'id': vehicule.id}) }}">edit</a>
+						</tr>
+						<tr>
+							<td>{{ vehicule.titulaire1 }}</td>
+							<td>{{ vehicule.titulaire2 }}</td>
+							<td>{{ vehicule.titulaireAdresse }}</td>
+						</tr>
 
-    {{ include('vehicule/_delete_form.html.twig') }}
+						<tr>
+							<th>D21 code nat</th>
+							<th>D3 Nom commercial</th>
+
+						</tr>
+						<tr>
+							<td>{{ vehicule.d21Codecni }}</td>
+							<td>{{ vehicule.d3Commerial }}</td>
+						</tr>
+						<tr>
+							<th>Numero VIN</th>
+							<td>{{ vehicule.numeroVIN }}</td>
+						</tr>
+						<tr>
+							<th>F1 ptac</th>
+							<th>F3 ptra</th>
+							<th>G1 poids vide</th>
+
+						</tr>
+						<tr>
+							<td>{{ vehicule.f1Ptac }}</td>
+							<td>{{ vehicule.f3Ptra }}</td>
+							<td>{{ vehicule.g1Poidsvide }}</td>
+						</tr>
+
+						<tr>
+							<th>Date du certificatAt</th>
+							<td>{{ vehicule.iCertificatAt ? vehicule.iCertificatAt|date('d/m/Y') : '' }}</td>
+						</tr>
+						<tr>
+							<th>J1 Genre</th>
+							<th>J2 Carrosserie</th>
+							<th>J3 Type nat</th>
+
+						</tr>
+						<tr>
+							<td>{{ vehicule.j1Genre }}</td>
+							<td>{{ vehicule.j2Carrosserie }}</td>
+							<td>{{ vehicule.j3Nat }}</td>
+						</tr>
+
+						<tr>
+							<th>K Réception</th>
+							<td>{{ vehicule.kReception }}</td>
+						</tr>
+						<tr>
+							<th>P1 Cylindrée</th>
+							<th>P2 Puis. KW</th>
+							<th>P3  Eenergie</th>
+							<th>P6 Puis. fisc.</th>
+
+						</tr>
+						<tr>
+							<td>{{ vehicule.p1Cylindree }}</td>
+							<td>{{ vehicule.p2Kw }}</td>
+							<td>{{ vehicule.p3Energie }}</td>
+							<td>{{ vehicule.p6Cv }}</td>
+						</tr>
+
+						<tr>
+							<th>S1 Places assises</th>
+							<th>S2 Places debout</th>
+
+						</tr>
+						<tr>
+							<td>{{ vehicule.s1Assis }}</td>
+							<td>{{ vehicule.s2Debout }}</td>
+						</tr>
+						<tr>
+							<th>U1_db</th>
+							<th>U2_moteur</th>
+							<th>V7_co2</th>
+							<th>V9_cee</th>
+
+						</tr>
+						<tr>
+							<td>{{ vehicule.u1Db }}</td>
+							<td>{{ vehicule.u2Moteur }}</td>
+							<td>{{ vehicule.v7Co2 }}</td>
+							<td>{{ vehicule.v9Cee }}</td>
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
+			<div class="tab-pane fade" id="infos" role="tabpanel" aria-labelledby="infos-tab">
+				<table class="table">
+					<tbody>
+						<tr>
+							<th>Date prochain contrôle technique</th>
+							<td>{{ vehicule.controleAt ? vehicule.controleAt|date('d/m/Y') : '' }}</td>
+						</tr>
+						<tr>
+							<th>Longueur</th>
+							<th>Largeur</th>
+							<th>Hauteur</th>
+
+						</tr>
+						<tr>
+							<td>{{ vehicule.longueur }}</td>
+							<td>{{ vehicule.largeur }}</td>
+							<td>{{ vehicule.hauteur }}</td>
+						</tr>
+						<tr>
+							<th>Transmission</th>
+							<th>Boite de vitesse</th>
+							<th>Nb vitesses</th>
+
+						</tr>
+						<tr>
+							<td>{{ vehicule.transmission }}</td>
+							<td>{{ vehicule.boite }}</td>
+							<td>{{ vehicule.nbvitesse }}</td>
+						</tr>
+
+						<tr>
+							<th>Réservoir</th>
+							<th>Conso urbaine</th>
+							<th>Conso mixte</th>
+
+						</tr>
+						<tr>
+							<td>{{ vehicule.reservoir }}</td>
+							<td>{{ vehicule.consoUrbaine }}</td>
+							<td>{{ vehicule.consoMixte }}</td>
+						</tr>
+
+						<tr>
+							<th>Date achat</th>
+							<th>Date revente</th>
+							<th>Valeur</th>
+
+						</tr>
+						<tr>
+							<td>{{ vehicule.achatAt ? vehicule.achatAt|date('d/m/Y') : '' }}</td>
+							<td>{{ vehicule.venteAt ? vehicule.venteAt|date('d/m/Y') : '' }}</td>
+							<td>{{ vehicule.valeur }}</td>
+						</tr>
+
+						<tr>
+							<th>Pneumatiques</th>
+							<td>{{ vehicule.pneumatiques }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+
+		<a href="{{ path('vehicule_index') }}">Retour à la liste</a>
+
+		<a href="{{ path('vehicule_edit', {'id': vehicule.id}) }}">Modifier</a>
+
+		{{ include('vehicule/_delete_form.html.twig') }}
+
+	</div>
 {% endblock %}

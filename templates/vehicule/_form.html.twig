@@ -1,4 +1,101 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+
+{# {{ form_widget(form) }} #}
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+	<li class="nav-item" role="presentation">
+		<button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Généralités</button>
+	</li>
+	<li class="nav-item" role="presentation">
+		<button class="nav-link" id="ci-tab" data-bs-toggle="tab" data-bs-target="#ci" type="button" role="tab" aria-controls="ci" aria-selected="false">Carte grise</button>
+	</li>
+	<li class="nav-item" role="presentation">
+		<button class="nav-link" id="infos-tab" data-bs-toggle="tab" data-bs-target="#infos" type="button" role="tab" aria-controls="infos" aria-selected="false">Informations</button>
+	</li>
+</ul>
+<div class="tab-content" id="myTabContent">
+	<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+		<div class="form-group">
+			{{ form_label(form.immatriculation)}}
+			{{ form_widget(form.immatriculation, {'attr': {'class': 'au-input au-input--full'}})}}
+		</div>
+		{# {{ form_row(form.immatriculation)}} #}
+		<div class="form-group">
+			{{ form_label(form.immatriculationAt)}}
+			{{ form_widget(form.immatriculationAt, {'attr': {'class': 'au-input au-input--full'}})}}
+		</div>
+		<div class="form-group">
+			{{ form_label(form.marque)}}
+			{{ form_widget(form.marque, {'attr': {'class': 'au-input au-input--full'}})}}
+		</div>
+
+		{{ form_row(form.version)}}
+	</div>
+	<div class="tab-pane fade" id="ci" role="tabpanel" aria-labelledby="ci-tab">
+		<div class="row">
+			<div class="col-sm-12 col-md-6">
+				{{ form_row(form.titulaire1)}}
+				{{ form_row(form.titulaire2)}}
+				{{ form_row(form.titulaire_adresse)}}
+				{{ form_row(form.d21_codecni)}}
+				{{ form_row(form.d3_commerial)}}
+				{{ form_row(form.numero_VIN)}}
+			</div>
+
+			<div class="col-sm-12 col-md-6">
+				{{ form_row(form.f1_ptac)}}
+				{{ form_row(form.f3_ptra)}}
+				{{ form_row(form.g1_poidsvide)}}
+				{{ form_row(form.i_certificatAt)}}
+				{{ form_row(form.j1_genre)}}
+				{{ form_row(form.j2_carrosserie)}}
+				{{ form_row(form.j3_nat)}}
+				{{ form_row(form.k_reception)}}
+				{{ form_row(form.p1_cylindree)}}
+				{{ form_row(form.p2_kw)}}
+				{{ form_row(form.p3_energie)}}
+				{{ form_row(form.p6_cv)}}
+				{{ form_row(form.s1_assis)}}
+				{{ form_row(form.s2_debout)}}
+				{{ form_row(form.u1_db)}}
+				{{ form_row(form.u2_moteur)}}
+				{{ form_row(form.v7_co2)}}
+				{{ form_row(form.v9_cee)}}
+			</div>
+		</div>
+	</div>
+	<div class="tab-pane fade" id="infos" role="tabpanel" aria-labelledby="infos-tab">
+		{{ form_row(form.controleAt)}}
+		{{ form_row(form.longueur)}}
+		{{ form_row(form.largeur)}}
+		{{ form_row(form.hauteur)}}
+		{{ form_row(form.transmission)}}
+		{{ form_row(form.boite)}}
+		{{ form_row(form.nbvitesse)}}
+		{{ form_row(form.couleur)}}
+		{{ form_row(form.reservoir)}}
+		{{ form_row(form.conso_urbaine)}}
+		{{ form_row(form.conso_mixte)}}
+		{{ form_row(form.achatAt)}}
+		{{ form_row(form.venteAt)}}
+		{{ form_row(form.valeur)}}
+		{{ form_row(form.pneumatiques)}}
+
+	</div>
+</div>
+
+{# Vérifie si on est surla route 'vehicule_edit' pour afficher les images#}
+{% if app.request.attributes.get('route') == 'vehicule_edit' %}
+	<h2>Images</h2>
+	{% for images in vehicule.gallery %}
+		<div>
+			<img src="{{ asset('/uploads/galerie/'~image.nom)}}" alt="Galerie" width="150px">
+			<a href="{{ path('vehicule_delete_image', {'id': image.id})}}" data-delete data-token="{{ csrf_token('delete' ~ image.id)}} ">
+				Supprimer l'image</a>
+		</div>
+
+	{% endfor %}
+{% endif %}
+
+
+<button class="btn">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}

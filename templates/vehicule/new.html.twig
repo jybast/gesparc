@@ -1,11 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Vehicule{% endblock %}
+{% block title %}Ajouter un véhicule
+{% endblock %}
 
 {% block body %}
-    <h1>Create new Vehicule</h1>
+	<div class="container">
+		<h1 class="h3 mb-3 text-center font-weight-normal">Ajouter un véhicule</h1>
 
-    {{ include('vehicule/_form.html.twig') }}
+		{{ include('vehicule/_form.html.twig') }}
 
-    <a href="{{ path('vehicule_index') }}">back to list</a>
+		<a href="{{ path('vehicule_index') }}">Retour à la liste</a>
+	</div>
 {% endblock %}

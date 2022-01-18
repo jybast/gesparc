@@ -138,7 +138,7 @@ class Vehicule
     #[ORM\Column(type: 'date', nullable: true)]
     private $venteAt;
 
-    #[ORM\Column(type: 'decimal', precision: 6, scale: 2, nullable: true)]
+    #[ORM\Column(type: 'decimal', precision: 10, scale: 2, nullable: true)]
     private $valeur;
 
     #[ORM\Column(type: 'string', length: 50, nullable: true)]
@@ -150,10 +150,18 @@ class Vehicule
     #[ORM\OneToMany(mappedBy: 'vehicule', targetEntity: Entretien::class)]
     private $entretiens;
 
+    #[ORM\OneToMany(mappedBy: 'vehicule', targetEntity: Galerie::class, orphanRemoval: true, cascade: ["persist"])]
+    private $galeries;
+
+    #[ORM\OneToMany(mappedBy: 'vehicule', targetEntity: Document::class)]
+    private $documents;
+
     public function __construct()
     {
         $this->assurance = new ArrayCollection();
         $this->entretiens = new ArrayCollection();
+        $this->galeries = new ArrayCollection();
+        $this->documents = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -731,6 +739,66 @@ class Vehicule
             // set the owning side to null (unless already changed)
             if ($entretien->getVehicule() === $this) {
                 $entretien->setVehicule(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Galerie[]
+     */
+    public function getGaleries(): Collection
+    {
+        return $this->galeries;
+    }
+
+    public function addGalery(Galerie $galery): self
+    {
+        if (!$this->galeries->contains($galery)) {
+            $this->galeries[] = $galery;
+            $galery->setVehicule($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGalery(Galerie $galery): self
+    {
+        if ($this->galeries->removeElement($galery)) {
+            // set the owning side to null (unless already changed)
+            if ($galery->getVehicule() === $this) {
+                $galery->setVehicule(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Document[]
+     */
+    public function getDocuments(): Collection
+    {
+        return $this->documents;
+    }
+
+    public function addDocument(Document $document): self
+    {
+        if (!$this->documents->contains($document)) {
+            $this->documents[] = $document;
+            $document->setVehicule($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDocument(Document $document): self
+    {
+        if ($this->documents->removeElement($document)) {
+            // set the owning side to null (unless already changed)
+            if ($document->getVehicule() === $this) {
+                $document->setVehicule(null);
             }
         }
 
