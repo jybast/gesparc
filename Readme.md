@@ -32,7 +32,7 @@ git push -u origin main
 
 ## Système d'authentification et enregistrement
 *    Créer l'entité User
-*    Créer un MainController de pages statiques (home, contact, infos)
+*    Créer un MainController de pages statiques (accueil, contact, infos)
 *    symfony console make:auth
 *    Adapter le template/security.login.html.twig 
 *    symfony console make:registration-form

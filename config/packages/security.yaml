@@ -16,6 +16,12 @@ security:
         main:
             lazy: true
             provider: app_user_provider
+            
+            logout:
+                path: gp_logout
+                # where to redirect after logout
+            custom_authenticator: App\Security\GesparcAuthenticator
+                # target: app_any_route
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
