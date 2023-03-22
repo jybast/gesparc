@@ -10879,6 +10879,12 @@ a:focus {
   background-size: cover;
 }
 
+.bg-request-image {
+  background: url("../img/request.png");
+  background-position: center;
+  background-size: cover;
+}
+
 .bg-password-image {
   background: url("../img/password.png");
   background-position: center;

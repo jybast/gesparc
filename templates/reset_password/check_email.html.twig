@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lien de modification du mot de passe.
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="card o-hidden border-0 shadow-lg my-5">
+			<div
+				class="card-body p-0">
+				<!-- Nested Row within Card Body -->
+				<div class="row">
+					<div class="col-lg-6 d-none d-lg-block bg-register-image"></div>
+					<div class="col-lg-6">
+						<div class="p-5 m-5">
+							<p>
+								Si un compte correspondant à votre adresse e-mail existe, un lien pour modifier votre mot de passe a été envoyé.
+																																																																																		        Ce lien expire dans
+								{{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
+							</p>
+							<p>Si vous ne recevez pas le mail vérifiez votre dossier spam ou
+								<a href="{{ path('gp_forgot_password_request') }}">essayez à nouveau.</a>.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

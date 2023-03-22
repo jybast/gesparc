@@ -48,7 +48,7 @@ class RegistrationController extends AbstractController
 
             // generate a signed url and email it to the user
             $this->emailVerifier->sendEmailConfirmation(
-                'app_verify_email',
+                'gp_verify_email',
                 $user,
                 (new TemplatedEmail())
                     ->from(new Address('mailer@gesparc.com', 'Gesparc'))
@@ -70,7 +70,7 @@ class RegistrationController extends AbstractController
         ]);
     }
 
-    #[Route('/verify/email', name: 'app_verify_email')]
+    #[Route('/verify/email', name: 'gp_verify_email')]
     public function verifyUserEmail(Request $request, TranslatorInterface $translator): Response
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
