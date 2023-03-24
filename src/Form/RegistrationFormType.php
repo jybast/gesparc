@@ -94,7 +94,7 @@ class RegistrationFormType extends AbstractType
                         'max' => 4096,
                     ]),
                     new Regex([
-                        'pattern' => "^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$",
+                        'pattern' => "#^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$#",
                         'message' => 'L\'adresse e-mail doit contenir 1 minuscule, 1 majuscule, 1 chiffre, 1 caractère spécial '
                     ])
                 ],
