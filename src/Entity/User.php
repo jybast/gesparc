@@ -2,6 +2,9 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 use App\Entity\Traits\CreatedAtTrait;
@@ -53,9 +56,50 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
 
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $dat_naissance = null;
+
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $num_pc = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $nb_points = null;
+
+    #[ORM\Column(length: 20, nullable: true)]
+    private ?string $cat_pc = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $valid_pc = null;
+
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $cat_caces = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $dat_pc = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $dat_caces = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $valid_caces = null;
+
+    #[ORM\OneToMany(mappedBy: 'conducteur', targetEntity: Carnet::class)]
+    private Collection $carnetdebord;
+
+    #[ORM\OneToMany(mappedBy: 'conducteur', targetEntity: Contravention::class)]
+    private Collection $contraventions;
+
+    #[ORM\OneToMany(mappedBy: 'conducteur', targetEntity: Sinistre::class)]
+    private Collection $sinistres;
+
+
+
     public function __construct()
     {
         $this->created_at = new \DateTimeImmutable();
+        $this->carnetdebord = new ArrayCollection();
+        $this->contraventions = new ArrayCollection();
+        $this->sinistres = new ArrayCollection();
     }
     public function __toString()
     {
@@ -212,6 +256,204 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    public function getDatNaissance(): ?\DateTimeInterface
+    {
+        return $this->dat_naissance;
+    }
+
+    public function setDatNaissance(?\DateTimeInterface $dat_naissance): self
+    {
+        $this->dat_naissance = $dat_naissance;
+
+        return $this;
+    }
+
+    public function getNumPc(): ?string
+    {
+        return $this->num_pc;
+    }
+
+    public function setNumPc(?string $num_pc): self
+    {
+        $this->num_pc = $num_pc;
+
+        return $this;
+    }
+
+    public function getNbPoints(): ?int
+    {
+        return $this->nb_points;
+    }
+
+    public function setNbPoints(?int $nb_points): self
+    {
+        $this->nb_points = $nb_points;
+
+        return $this;
+    }
+
+    public function getCatPc(): ?string
+    {
+        return $this->cat_pc;
+    }
+
+    public function setCatPc(?string $cat_pc): self
+    {
+        $this->cat_pc = $cat_pc;
+
+        return $this;
+    }
+
+    public function isValidPc(): ?bool
+    {
+        return $this->valid_pc;
+    }
+
+    public function setValidPc(?bool $valid_pc): self
+    {
+        $this->valid_pc = $valid_pc;
+
+        return $this;
+    }
+
+    public function getCatCaces(): ?string
+    {
+        return $this->cat_caces;
+    }
+
+    public function setCatCaces(string $cat_caces): self
+    {
+        $this->cat_caces = $cat_caces;
+
+        return $this;
+    }
+
+    public function getDatPc(): ?\DateTimeInterface
+    {
+        return $this->dat_pc;
+    }
+
+    public function setDatPc(?\DateTimeInterface $dat_pc): self
+    {
+        $this->dat_pc = $dat_pc;
+
+        return $this;
+    }
+
+    public function getDatCaces(): ?\DateTimeInterface
+    {
+        return $this->dat_caces;
+    }
+
+    public function setDatCaces(?\DateTimeInterface $dat_caces): self
+    {
+        $this->dat_caces = $dat_caces;
+
+        return $this;
+    }
+
+    public function isValidCaces(): ?bool
+    {
+        return $this->valid_caces;
+    }
+
+    public function setValidCaces(?bool $valid_caces): self
+    {
+        $this->valid_caces = $valid_caces;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Carnet>
+     */
+    public function getCarnetdebord(): Collection
+    {
+        return $this->carnetdebord;
+    }
+
+    public function addCarnetdebord(Carnet $carnetdebord): self
+    {
+        if (!$this->carnetdebord->contains($carnetdebord)) {
+            $this->carnetdebord->add($carnetdebord);
+            $carnetdebord->setConducteur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCarnetdebord(Carnet $carnetdebord): self
+    {
+        if ($this->carnetdebord->removeElement($carnetdebord)) {
+            // set the owning side to null (unless already changed)
+            if ($carnetdebord->getConducteur() === $this) {
+                $carnetdebord->setConducteur(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Contravention>
+     */
+    public function getContraventions(): Collection
+    {
+        return $this->contraventions;
+    }
+
+    public function addContravention(Contravention $contravention): self
+    {
+        if (!$this->contraventions->contains($contravention)) {
+            $this->contraventions->add($contravention);
+            $contravention->setConducteur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContravention(Contravention $contravention): self
+    {
+        if ($this->contraventions->removeElement($contravention)) {
+            // set the owning side to null (unless already changed)
+            if ($contravention->getConducteur() === $this) {
+                $contravention->setConducteur(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Sinistre>
+     */
+    public function getSinistres(): Collection
+    {
+        return $this->sinistres;
+    }
+
+    public function addSinistre(Sinistre $sinistre): self
+    {
+        if (!$this->sinistres->contains($sinistre)) {
+            $this->sinistres->add($sinistre);
+            $sinistre->setConducteur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSinistre(Sinistre $sinistre): self
+    {
+        if ($this->sinistres->removeElement($sinistre)) {
+            // set the owning side to null (unless already changed)
+            if ($sinistre->getConducteur() === $this) {
+                $sinistre->setConducteur(null);
+            }
+        }
 
         return $this;
     }
